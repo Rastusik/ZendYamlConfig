@@ -1,0 +1,22 @@
+{
+    "name": "rastusik/zend-yaml-config",
+    "description": "Allows to use YAML configuration files in ZF2",
+    "license": "MIT",
+    "keywords": [
+        "framework",
+        "zf2",
+        "module"
+    ],
+    "homepage": "https://github.com/Rastusik/ZendYamlConfig",
+    "require": {
+        "php": ">=5.4",
+        "symfony/yaml": "dev-master"
+    },
+
+    "require-dev": {
+        "zendframework/zendframework": "dev-master",
+        "symfony/var-dumper": "dev-master",
+        "squizlabs/php_codesniffer": "2.*",
+        "phpmd/phpmd" : "@stable"
+    }
+}
