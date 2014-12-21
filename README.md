@@ -147,8 +147,8 @@ Zend\Mvc\Application::init($config)->run();
 
 ## Features
 
-The file parser replaces every occurence of the ___DIR___ constant in the YAML files with the path
-to the parent directory of the YAML file (basically it is the same function as the __DIR__ constant
+The file parser replaces every occurence of the ``__DIR__`` constant in the YAML files with the path
+to the parent directory of the YAML file (basically it is the same function as the ``__DIR__`` constant
 in a usual PHP file. 
 
 ## TODO
