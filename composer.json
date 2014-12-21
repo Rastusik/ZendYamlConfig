@@ -18,5 +18,11 @@
         "symfony/var-dumper": "dev-master",
         "squizlabs/php_codesniffer": "2.*",
         "phpmd/phpmd" : "@stable"
+    },
+
+    "autoload": {
+        "classmap": [
+            ""
+        ]
     }
 }
