@@ -10,7 +10,7 @@
     "homepage": "https://github.com/Rastusik/ZendYamlConfig",
     "require": {
         "php": ">=5.4",
-        "symfony/yaml": "dev-master"
+        "symfony/yaml": "3.0.*@dev"
     },
 
     "require-dev": {
