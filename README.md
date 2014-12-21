@@ -4,12 +4,12 @@ ZendYamlConfig
 Module providing the ability to use YAML configuration files in ZF2. 
 
 Many devs don't like ZF2 for many reasons, one of them is the necessity to use php arrays for configuration.
-With this module, you it is possible to leave behind all the php arrays and to use a nicer and more
+With this module, it is possible to leave behind all the php arrays and to use a nicer and more
 compact format, in other words, you are able to change files like this:
 
 ```php
-
 <?php
+
 return [
     'modules' => [
         'ZendDeveloperTools',
@@ -26,13 +26,11 @@ return [
         ],
     ],
 ];
-
 ```
 
 into this:
 
 ```yaml
-
 modules:
   - ZendDeveloperTools
   - ZendYamlConfig
@@ -45,10 +43,11 @@ module_listener_options:
   module_paths:
     - ./module
     - ./vendor
-    
 ```
 
-Note the difference between the number of lines.
+Note the difference between the number of lines. YAML also prohibits you to write executable code
+into your configuration files, so the configuration does only what it is supposed to do (without any
+anonymous callbacks).
 
 ## Requirements
 
@@ -69,7 +68,6 @@ If you want to read the configuration files on the Module level (the config file
 your module has to look like this:
  
 ```php
-
 <?php
 
 class Module implements DependencyIndicatorInterface, InitProviderInterface
@@ -116,14 +114,12 @@ class Module implements DependencyIndicatorInterface, InitProviderInterface
         return $config;
     }
 }
-
 ```
  
 It is possible to use YAML files also as the main config files of the project. 
-The main config file should look like this:
+The main config file should similar to this one:
 
 ```yaml
-
 modules:
   - ZendDeveloperTools
   - ZendYamlConfig
@@ -136,23 +132,26 @@ module_listener_options:
   module_paths:
     - ./module
     - ./vendor
-    
 ```
 
 Then, the app has to be initialized the following way:
 
 ```php
-
 <?php
 
 $yamlParser = ZendYamlConfig\Service\YamlFileParserFactory::getYamlFileParser();
 $config = $yamlParser->parseFile(__DIR__ . '/../config/application.config.yaml');
 
 Zend\Mvc\Application::init($config)->run();
-
 ```
+
+## Features
+
+The file parser replaces every occurence of the ___DIR___ constant in the YAML files with the path
+to the parent directory of the YAML file (basically it is the same function as the __DIR__ constant
+in a usual PHP file. 
 
 ## TODO
 
-Pasring of the YAML files is not as fast as using plain PHP files, so a caching layer will have to be
+Parsing of the YAML files is not as fast as using plain PHP files, so a caching layer will have to be
 imlemented. Soon.
